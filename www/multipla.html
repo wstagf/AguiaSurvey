@@ -1,8 +1,14 @@
 <div class="list-block">
+    <div class="content-block-title">{{pesquisa.listaPartes[0].listaQuestoes[0].tituloPergunta}}</div>
+    <div class="content-block content-block-custom-description-part">
+        <p>{{pesquisa.listaPartes[0].listaQuestoes[0].descricaoPergunta}}</p>
+    </div>
+</div>
+<div class="list-block" >
     <ul>
-        <li ng-repeat="alternativa in pesquisa.listaPartes[0].listaQuestoes[0].alternativas">
-            <label class="label-checkbox item-content">
-                <input type="checkbox" name="{{pesquisa.listaPartes[0].listaQuestoes[0].variavel}}" value="{{alternativa.valor}}" />
+        <li >
+            <label class="label-checkbox item-content"  ng-repeat="alternativa in pesquisa.listaPartes[0].listaQuestoes[0].alternativas" >
+                <input type="checkbox" name="{{pesquisa.listaPartes[0].listaQuestoes[0].variavel}}" value="{{alternativa.valor}}"  ng-click="alteraSelecaoCheckBox(pesquisa.listaPartes[0].listaQuestoes[0].variavel)"  />
                 <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
                 <div class="item-inner">
                     <div class="item-title">{{alternativa.descricao}}</div>
@@ -11,8 +17,6 @@
         </li>
         <li>
             <label class="label-checkbox item-content">
-                <input type="checkbox" name="{{pesquisa.listaPartes[0].listaQuestoes[0].variavel}}" value="seila" />
-                
                 <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
                 <div class="item-inner">
                     <div class="item-title">
@@ -29,11 +33,13 @@
             </label>
         </li>
     </ul>
+    Resposta: {{pesquisa.listaPartes[0].listaQuestoes[0].respostas}}
 </div>
 
 
+
 <div class="row margin">
-    <div class="col-25"><a class="button button-fill button-raised" href="#">Pergunta 01</a></div>
+    <div class="col-25"><a class="button button-fill button-raised" href="#" ng-click="navega('parte')">Titulo Parte</a></div>
     <div class="col-50"></div>
-    <div class="col-25"><a class="button button-fill button-raised" href="#">Pergunta 01</a></div>
+    <div class="col-25"><a class="button button-fill button-raised" href="#"ng-click="navega('multiplaRandom')">Multipla Random</a></div>
 </div>
