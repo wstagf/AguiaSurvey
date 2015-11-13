@@ -1,0 +1,39 @@
+<div class="list-block">
+    <ul>
+        <li ng-repeat="alternativa in pesquisa.listaPartes[0].listaQuestoes[0].alternativas">
+            <label class="label-checkbox item-content">
+                <input type="checkbox" name="{{pesquisa.listaPartes[0].listaQuestoes[0].variavel}}" value="{{alternativa.valor}}" />
+                <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+                <div class="item-inner">
+                    <div class="item-title">{{alternativa.descricao}}</div>
+                </div>
+            </label>
+        </li>
+        <li>
+            <label class="label-checkbox item-content">
+                <input type="checkbox" name="{{pesquisa.listaPartes[0].listaQuestoes[0].variavel}}" value="seila" />
+                
+                <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+                <div class="item-inner">
+                    <div class="item-title">
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-input">
+                                    <input type="text" placeholder="Outros, especifique:" ng-model="pesquisa.listaPartes[0].listaQuestoes[0].outroEspecifique" />
+                                </div>
+                                <a class="button button-fill button-raised" href="#" ng-click="adicionaOpcaoAberta()">Adicionar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </label>
+        </li>
+    </ul>
+</div>
+
+
+<div class="row margin">
+    <div class="col-25"><a class="button button-fill button-raised" href="#">Pergunta 01</a></div>
+    <div class="col-50"></div>
+    <div class="col-25"><a class="button button-fill button-raised" href="#">Pergunta 01</a></div>
+</div>

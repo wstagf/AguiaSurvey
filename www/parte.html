@@ -1,0 +1,11 @@
+<div class="list-block">
+    <div class="content-block-title">{{parteAtual.titulo}}</div>
+    <div class="content-block content-block-custom-description-part">
+        <p>{{parteAtual.comentario}}</p>
+    </div>
+{{ parteAtual.id > 0 }}
+<div class="row margin">
+    <div class="col-25" ng-hide="{{ (parteAtual.id == 0) }}"><a class="button button-fill button-raised" href="#" ng-click="" >Parte Anterior</a></div>
+    <div class="col-50"></div>
+    <div class="col-25" ng-hide="{{ (parteAtual.id == pesquisa.listaPartes.length -1)}}"><a class="button button-fill button-raised" href="#" ng-click="proximaParte()" >Proxima Parte</a></div>
+</div>

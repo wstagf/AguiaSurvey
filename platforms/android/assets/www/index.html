@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html ng-app="AguiaSurvey">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="theme-color" content="#2196f3">
+    <title>AguiaSurvey</title>
+
+    <script src="js/jquery/jquery-2.1.4.min.js"></script>
+    <script src="js/angular/angular.min.js"></script>
+    <script src="js/angular/angular-animate.min.js"></script>
+
+    <link href="css/kitchen-sink.css" rel="stylesheet" />
+    <link href="css/framework7.material.min.css" rel="stylesheet" />
+
+    <style>
+        .margin {
+            margin: 10px;
+        }
+    </style>
+
+
+</head>
+<body ng-controller="surveyCtrl">
+
+    <div class="statusbar-overlay"></div>
+    <div class="panel-overlay"></div>
+    <div class="panel panel-left panel-cover">
+        <div class="view navbar-fixed">
+            <div class="pages">
+                <div data-page="panel-left" class="page">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <div class="center">Ações</div>
+                        </div>
+                    </div>
+                    <div class="page-content">
+                        <div class="content-block-title">Subtitulo</div>
+                        <div class="list-block">
+                            <ul>
+                                <li>
+                                    <a href="#" class="item-link close-panel" ng-click="navega('multipla')">
+                                        <div class="item-content">
+                                            <div class="item-media"><i class="icon icon-f7"></i></div>
+                                            <div class="item-inner">
+                                                <div class="item-title">Multipla</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="content-block">
+                            <p>Texto no final </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-right panel-reveal">
+        <div class="view view-right">
+            <div class="pages navbar-fixed">
+                <div data-page="panel-right1" class="page">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <div class="center">Right Panel</div>
+                        </div>
+                    </div>
+                    <div class="page-content">
+                        <div class="content-block">
+                            <p>This is a right side panel. You can close it by clicking outsite or on this link: <a href="#" class="close-panel">close me</a>. You can put here anything, even another isolated view, try it:</p>
+                        </div>
+                        <div class="list-block">
+                            <ul>
+                                <li>
+                                    <a href="panel-right2.html" class="item-link">
+                                        <div class="item-content">
+                                            <div class="item-inner">
+                                                <div class="item-title">Right panel page 2</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="panel-right3.html" class="item-link">
+                                        <div class="item-content">
+                                            <div class="item-inner">
+                                                <div class="item-title">Right panel page 3</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="views">
+        <div class="view view-main">
+            <div class="pages navbar-fixed">
+                <div data-page="index" class="page">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <div class="center">
+                                {{pesquisa.titulo}}
+                                <div ng-show="parteAtual.titulo">, {{parteAtual.titulo}} </div>
+                                <div ng-show="perguntaAtual.tituloPergunta">, {{perguntaAtual.tituloPergunta}}</div>
+                            </div>   {{paginasVisitadas}}
+                            <div class="right"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                        </div>
+                    </div>
+
+                    <div class="page-content" ng-include="paginaAtual">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/framework7.min.js"></script>
+    <script src="js/kitchen-sink.js"></script>
+    <script>
+        var app = angular.module('AguiaSurvey', []);
+        app.controller('surveyCtrl', function ($scope) {
+            $scope.pesquisa = {
+                titulo: 'Questionario Teste',
+                comentario: 'Apresentação do questionario Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.',
+                listaPartes: [
+                    {
+                        id: 0,
+                        titulo: 'Parte 01',
+                        comentario: 'Texto comentario parte 01. sit amet, consectetuer adipiscing elit, s',
+                        show: true,
+                        listaQuestoes: [
+                            {
+                                id: 0,
+                                tituloPergunta: 'Titulo Pergunta 01',
+                                descricaoPergunta: 'Descricao da pergunta, esta pergunta é um exemplo de pergunta multipla ',
+                                variavel: 'variavelPergunta01',
+                                tipo: 'fechada',
+                                subtipo: 'multipla',
+                                alternativas: [
+                                    { descricao: 'Alternativa 01', valor: '1' },
+                                    { descricao: 'Alternativa 02', valor: '2' },
+                                    { descricao: 'Alternativa 03', valor: '3' },
+                                    { descricao: 'Alternativa 04', valor: '4' },
+                                    { descricao: 'Alternativa 05', valor: '5' }
+                                ],
+                                outroEspecifique: '', 
+                                respostas: [],
+                                qdeCaracter: '',
+                                qdeRespostaPossivel: '',
+                                controles: [
+                                    {
+                                        valor: '',
+                                        perguntaDestino: ''
+                                    }
+                                ],
+                                respostaOrdenada: ''
+                            }
+                        ]
+                    }
+                ]
+            };
+
+
+            $scope.parteAtual = {};
+
+            $scope.paginaAtual = 'home.html';
+
+            $scope.navega = function (pagina) {
+                $scope.paginaAtual = pagina + ".html"
+            }
+
+            $scope.adicionaOpcaoAberta = function () {
+                
+                $scope.pesquisa.listaPartes[0].listaQuestoes[0].alternativas.push({ descricao: $scope.pesquisa.listaPartes[0].listaQuestoes[0].outroEspecifique, valor:  $scope.pesquisa.listaPartes[0].listaQuestoes[0].alternativas.length + 1 + ''})
+                $scope.pesquisa.listaPartes[0].listaQuestoes[0].outroEspecifique = "";
+            }
+
+        });
+
+    </script>
+</body>
+</html>
