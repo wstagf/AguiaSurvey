@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html ng-app="AguiaSurvey">
 <head>
     <meta charset="utf-8" />
@@ -162,7 +162,33 @@
                                         perguntaDestino: ''
                                     }
                                 ],
-                                respostaOrdenada: ''
+                                respostaOrdenada: 'true'
+                            },
+                            {
+                                id: 1,
+                                tituloPergunta: 'Titulo Pergunta 02',
+                                descricaoPergunta: 'Descricao da pergunta, esta pergunta é um exemplo de pergunta multipla porem foi embaralhado as respostas ',
+                                variavel: 'variavelPergunta02',
+                                tipo: 'fechada',
+                                subtipo: 'multipla',
+                                alternativas: [
+                                    { descricao: 'Random 01', valor: '1' },
+                                    { descricao: 'Random 02', valor: '2' },
+                                    { descricao: 'Random 03', valor: '3' },
+                                    { descricao: 'Random 04', valor: '4' },
+                                    { descricao: 'Random 05', valor: '5' }
+                                ],
+                                outroEspecifique: '',
+                                respostas: [],
+                                qdeCaracter: '',
+                                qdeRespostaPossivel: '',
+                                controles: [
+                                    {
+                                        valor: '',
+                                        perguntaDestino: ''
+                                    }
+                                ],
+                                respostaOrdenada: 'false'
                             }
                         ]
                     }
@@ -183,12 +209,26 @@
                 $scope.pesquisa.listaPartes[0].listaQuestoes[0].outroEspecifique = "";
             }
             
-            $scope.mostraPreencheResposta = function () {
-                
+            $scope.alteraSelecaoCheckBox = function (variavel) {
+                $scope.pesquisa.listaPartes[0].listaQuestoes[0].respostas = [];
+
+                $("input:checkbox[name='" + variavel + "']:checked").map(function () { $scope.pesquisa.listaPartes[0].listaQuestoes[0].respostas.push($(this).val()) });
+                console.log($scope.pesquisa.listaPartes[0].listaQuestoes[0].respostas);
+
             }
+
+            $scope.random = function () {
+                return 0.5 - Math.random();
+            }
+
+           
 
         });
 
+     
+        //
     </script>
 </body>
 </html>
+
+
